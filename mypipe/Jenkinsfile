@@ -11,5 +11,8 @@ pipeline {
            		sh 'echo $MY_HI'
 	        }
         }
+        stage('Compile') {
+           		sh 'mvn compile'
+        }
     }
 }
