@@ -14,7 +14,7 @@ pipeline {
            		sh 'echo second $MY_HI'
            		script {
 		               if (env.BRANCH_NAME == 'development')
-        			echo 'this is development branch'
+        			echo 'this is development branch second version'
         		else 
         			echo 'this is master branch'
 		           }
