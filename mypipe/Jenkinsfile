@@ -4,7 +4,7 @@ agent any
         maven 'Maven'
     }
      environment {
-     DOCKER_REGISTRY = '10.20.10.77'
+     VERSION = 'latest'
     }
     stages {
         stage('Preparation') {
@@ -39,7 +39,7 @@ agent any
 	        	  	 sh 'echo development registry pushing'
 	        	 	}
 				   if (env.BRANCH_NAME == 'master') {
-	               	 sh 'echo docker url: $REGISTRY'				   	
+	               	 sh 'echo docker url: $REGISTRY and version: $VERSION'				   	
 	               	 sh 'echo master registry pushing'
 	        	 }
                }
