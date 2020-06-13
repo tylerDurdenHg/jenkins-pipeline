@@ -11,7 +11,7 @@ pipeline {
         stage('Preparation') {
         	steps {
 	       		sh 'echo Hi its me'
-           		sh 'echo $MY_HI'
+           		sh 'echo second $MY_HI'
 	        }
         }
         stage('Compile') {
