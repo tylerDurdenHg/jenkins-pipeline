@@ -15,6 +15,10 @@ pipeline {
 	        }
         }
         stage('Compile') {
+        	if (env.BRANCH_NAME == 'development')
+        		echo 'this is development branch'
+        	else 
+        		echo 'this is master branch'
         	when {
 	            branch 'development'
 	        }
