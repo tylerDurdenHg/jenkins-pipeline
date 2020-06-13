@@ -1,64 +1,52 @@
 pipeline {
-    agent any
+agent any
     tools {
         maven 'Maven'
     }
-    environment {
-        MY_HI= "HELLO"
+     environment {
     }
-    
     stages {
         stage('Preparation') {
-        	steps {
-        		sh 'echo build informations: '
-        		println "current build number: ${currentBuild.number}"
-        		println "name: ${env.JOB_NAME} num: #${env.BUILD_NUMBER}"
-           		sh 'echo second $MY_HI'
-	        }
+           steps {
+               println "Jenkins job: ${env.JOB_NAME} num: #${env.BUILD_NUMBER} has started..."
+           }
+        }
+        stage('Code Quality') {
+           steps {
+               sh 'echo check sonar/quality tools'
+           }
         }
         stage('Compile') {
-        steps {
-        	script {
-	            if (env.BRANCH_NAME == 'development') {
-	        	   sh 'echo this is development branch second part'
-		       	   sh 'mvn -f mypipe/pom.xml compile'                          
+           steps {
+               sh 'mvn -f mypipe/pom.xml compile'
+           }
+        }
+        stage('Unit Tests') {
+           steps {
+               sh 'mvn -f mypipe/pom.xml test'
+           }
+        }
+        stage('Integration Test') {
+           steps {
+               sh 'mvn -f mypipe/pom.xml verify -DskipUnitTests'
+           }
+        }
+        stage('Upload Image') {
+           steps {
+               script {
+                   if (env.BRANCH_NAME == 'development') {
+	        	  	 sh 'echo development registry pushing'
+	        	 	}
+				   if (env.BRANCH_NAME == 'master') {
+	               	 sh 'echo master registry pushing'
 	        	 }
-				if (env.BRANCH_NAME == 'master') {
-	               sh 'echo this is master branch second part'
-		           sh 'mvn -f mypipe/pom.xml compile'                       
-	        	 }
-	        }
-
-        	}
+               }
+           }
         }
-       stage('Test') {
-        	steps {
-	            sh 'mvn -f mypipe/pom.xml test'
-	        }
-        }
-        }
-        
-       post {
-        always {
-            junit 'mypipe/target/surefire-reports/*.xml'
+        stage('Delete Pod') {
+           steps {
+               sh 'echo remove image from Kubernetes'
+           }
         }
     }
-        
-        
-        
-            /*
-    	 stage('Example') {
-            input {
-                message "Should we continue?"
-                ok "Yes, we should."
-                submitter "alice,bob"
-                parameters {
-                    string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-                }
-            }
-            steps {
-                echo "Hello, ${PERSON}, nice to meet you."
-            }
-        }
-        */
 }
