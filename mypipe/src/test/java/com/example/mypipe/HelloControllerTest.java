@@ -9,6 +9,6 @@ public class HelloControllerTest {
 	@Test
 	public void hello() {
 		assertEquals(2, 2);  
-	}
+	} 
 
 }
