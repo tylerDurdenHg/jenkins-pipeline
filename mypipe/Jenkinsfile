@@ -12,10 +12,12 @@ pipeline {
         	steps {
 	       		sh 'echo Hi its me'
            		sh 'echo second $MY_HI'
-           		if (env.BRANCH_NAME == 'development')
+           		script {
+		               if (env.BRANCH_NAME == 'development')
         			echo 'this is development branch'
         		else 
         			echo 'this is master branch'
+		           }
 	        }
         }
         stage('Compile') {
