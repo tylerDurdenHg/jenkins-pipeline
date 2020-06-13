@@ -23,11 +23,11 @@ pipeline {
         stage('Compile') {
         steps {
        	 script {
-        	if ($BRANCH_NAME == 'development') {
+        	if (env.BRANCH_NAME == 'development') {
         	      sh 'this is development branch second part'
 	            sh 'mvn -f mypipe/pom.xml compile'                  
         	 }
-        	if ($BRANCH_NAME == 'master') {
+        	if (env.BRANCH_NAME == 'master') {
         		sh 'this is master branch second part'
 	            sh 'mvn -f mypipe/pom.xml compile'
 	        }
