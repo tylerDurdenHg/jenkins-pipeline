@@ -6,8 +6,10 @@ pipeline {
     
     stages {
         stage('Preparation') {
-           sh 'echo Hi its me'
-           sh 'echo $MY_HI'
+        	steps {
+	       		sh 'echo Hi its me'
+           		sh 'echo $MY_HI'
+	        }
         }
     }
 }
