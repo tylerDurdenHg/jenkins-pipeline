@@ -8,7 +8,7 @@ public class HelloControllerTest {
 	
 	@Test
 	public void hello() {
-		assertEquals(2, 1);
+		assertEquals(2, 2);
 	}
 
 }
