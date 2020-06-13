@@ -22,9 +22,7 @@ pipeline {
           sh 'echo this is development branch second part'
 	       sh 'mvn -f mypipe/pom.xml compile'          
         	}
-        }
-        stage('Master Compile') {
-           when {
+         when {
                branch 'master'
            }
            steps {
@@ -32,7 +30,6 @@ pipeline {
 	           sh 'mvn -f mypipe/pom.xml compile'
            }
         }
-        
        stage('Test') {
         	steps {
 	            sh 'mvn -f mypipe/pom.xml test'
