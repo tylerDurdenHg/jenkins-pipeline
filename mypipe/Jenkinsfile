@@ -4,6 +4,7 @@ agent any
         maven 'Maven'
     }
      environment {
+     REGISTRY = '10.20.10.77'
     }
     stages {
         stage('Preparation') {
