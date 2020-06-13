@@ -10,7 +10,8 @@ pipeline {
     stages {
         stage('Preparation') {
         	steps {
-	       		sh 'echo Hi its me'
+        		sh 'echo build informations: '
+	       		sh ' ${currentBuild.fullDisplayName} ${env.JOB_NAME} #${env.BUILD_NUMBER} '
            		sh 'echo second $MY_HI'
 	        }
         }
