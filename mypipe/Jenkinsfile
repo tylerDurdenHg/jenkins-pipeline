@@ -4,7 +4,7 @@ agent any
         maven 'Maven'
     }
      environment {
-     REGISTRY = '10.20.10.77'
+     DOCKER_REGISTRY = '10.20.10.77'
     }
     stages {
         stage('Preparation') {
@@ -39,6 +39,7 @@ agent any
 	        	  	 sh 'echo development registry pushing'
 	        	 	}
 				   if (env.BRANCH_NAME == 'master') {
+	               	 sh 'echo docker url: env.REGISTRY'				   	
 	               	 sh 'echo master registry pushing'
 	        	 }
                }
@@ -50,4 +51,9 @@ agent any
            }
         }
     }
+    post {
+        always {
+            junit 'mypipe/target/surefire-reports/*.xml'
+        }
+     }
 }
