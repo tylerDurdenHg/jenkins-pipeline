@@ -1,0 +1,13 @@
+pipeline {
+    agent any
+    environment {
+        MY_HI= "HELLO"
+    }
+    
+    stages {
+        stage('Preparation') {
+           sh 'echo Hi its me'
+           sh 'echo $MY_HI'
+        }
+    }
+}
