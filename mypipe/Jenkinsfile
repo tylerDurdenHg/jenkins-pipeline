@@ -16,7 +16,8 @@ pipeline {
         }
         stage('Compile') {
         steps {
-	        	if (env.BRANCH_NAME == 'development') {
+        	script {
+	            if (env.BRANCH_NAME == 'development') {
 	        	   sh 'echo this is development branch second part'
 		       	   sh 'mvn -f mypipe/pom.xml compile'                          
 	        	 }
@@ -24,6 +25,8 @@ pipeline {
 	               sh 'echo this is master branch second part'
 		           sh 'mvn -f mypipe/pom.xml compile'                       
 	        	 }
+	        }
+
         	}
         }
        stage('Test') {
