@@ -8,7 +8,29 @@ pipeline {
     }
     
     stages {
-    /*
+        stage('Preparation') {
+        	steps {
+	       		sh 'echo Hi its me'
+           		sh 'echo $MY_HI'
+	        }
+        }
+        stage('Compile') {
+        	when {
+	            branch 'development'
+	        }
+        	steps {
+	            sh 'mvn -f mypipe/pom.xml compile'
+	        }
+        }
+       stage('Test') {
+        	steps {
+	            sh 'mvn -f mypipe/pom.xml test'
+	        }
+        }
+        
+        
+        
+            /*
     	 stage('Example') {
             input {
                 message "Should we continue?"
@@ -23,23 +45,5 @@ pipeline {
             }
         }
         */
-    
-        stage('Preparation') {
-        	steps {
-	       		sh 'echo Hi its me'
-           		sh 'echo $MY_HI'
-	        }
-        }
-        stage('Compile') {
-        	steps {
-	            sh 'mvn -f mypipe/pom.xml compile'
-	        }
-        }
-       stage('Test') {
-        	steps {
-	            sh 'mvn -f mypipe/pom.xml test'
-	        }
-        }
-        
     }
 }
