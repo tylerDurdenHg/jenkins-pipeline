@@ -8,9 +8,7 @@ pipeline {
     }
     
     stages {
-    	sh '''
-    		cd mypipe
-    	'''
+    	dir('mypipe')
         stage('Preparation') {
         	steps {
 	       		sh 'echo Hi its me'
