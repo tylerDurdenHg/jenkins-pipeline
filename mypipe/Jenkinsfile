@@ -19,7 +19,7 @@ pipeline {
             branch 'development'
         }
         steps {
-          sh 'this is development branch second part'
+          sh 'echo this is development branch second part'
 	       sh 'mvn -f mypipe/pom.xml compile'          
         	}
         }
@@ -28,8 +28,8 @@ pipeline {
                branch 'master'
            }
            steps {
-               sh 'this is master branch second part'
-	            sh 'mvn -f mypipe/pom.xml compile'
+               sh 'echo this is master branch second part'
+	           sh 'mvn -f mypipe/pom.xml compile'
            }
         }
         
