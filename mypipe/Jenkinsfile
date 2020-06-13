@@ -8,7 +8,6 @@ pipeline {
     }
     
     stages {
-    	dir('mypipe')
         stage('Preparation') {
         	steps {
 	       		sh 'echo Hi its me'
@@ -17,7 +16,7 @@ pipeline {
         }
         stage('Compile') {
         	steps {
-	            sh 'mvn compile'
+	            sh 'mvn -f mypipe/pom.xml compile'
 	        }
         }
     }
