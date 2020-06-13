@@ -8,6 +8,7 @@ pipeline {
     }
     
     stages {
+    /*
     	 stage('Example') {
             input {
                 message "Should we continue?"
@@ -21,6 +22,7 @@ pipeline {
                 echo "Hello, ${PERSON}, nice to meet you."
             }
         }
+        */
     
         stage('Preparation') {
         	steps {
@@ -33,5 +35,11 @@ pipeline {
 	            sh 'mvn -f mypipe/pom.xml compile'
 	        }
         }
+       stage('Test') {
+        	steps {
+	            sh 'mvn -f mypipe/pom.xml test'
+	        }
+        }
+        
     }
 }
