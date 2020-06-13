@@ -15,20 +15,16 @@ pipeline {
 	        }
         }
         stage('Compile') {
-        when {
-            branch 'development'
-        }
         steps {
-          sh 'echo this is development branch second part'
-	       sh 'mvn -f mypipe/pom.xml compile'          
+	        	if (env.BRANCH_NAME == 'development') {
+	        	   sh 'echo this is development branch second part'
+		       	   sh 'mvn -f mypipe/pom.xml compile'                          
+	        	 }
+				if (env.BRANCH_NAME == 'master') {
+	               sh 'echo this is master branch second part'
+		           sh 'mvn -f mypipe/pom.xml compile'                       
+	        	 }
         	}
-         when {
-               branch 'master'
-           }
-           steps {
-               sh 'echo this is master branch second part'
-	           sh 'mvn -f mypipe/pom.xml compile'
-           }
         }
        stage('Test') {
         	steps {
