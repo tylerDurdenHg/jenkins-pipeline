@@ -9,7 +9,7 @@ agent any
     stages {
         stage('Preparation') {
            steps {
-               println "Jenkins job: ${env.JOB_NAME} num: #${env.BUILD_NUMBER} has started..."
+               sh 'Jenkins job: $env.JOB_NAME number: $env.BUILD_NUMBER has started...'
            }
         }
         stage('Code Quality') {
