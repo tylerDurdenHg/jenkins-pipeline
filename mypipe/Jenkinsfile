@@ -14,9 +14,9 @@ pipeline {
            		sh 'echo second $MY_HI'
            		script {
 		               if (env.BRANCH_NAME == 'development')
-        			echo 'this is development branch second version'
+        			echo 'this is development branch first part'
         		else 
-        			echo 'this is master branch'
+        			echo 'this is master branch first part'
 		           }
 	        }
         }
@@ -25,6 +25,14 @@ pipeline {
 	            branch 'development'
 	        }
         	steps {
+        		sh 'this is development branch second part'
+	            sh 'mvn -f mypipe/pom.xml compile'
+	        }
+	      when {
+	            branch 'master'
+	        }
+        	steps {
+        		sh 'this is master branch second part'
 	            sh 'mvn -f mypipe/pom.xml compile'
 	        }
         }
