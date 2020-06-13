@@ -11,7 +11,8 @@ pipeline {
         stage('Preparation') {
         	steps {
         		sh 'echo build informations: '
-        		println "${currentBuild.fullDisplayName} ${env.JOB_NAME} #${env.BUILD_NUMBER}"
+        		println "current build number: ${currentBuild.number}"
+        		println "name: ${env.JOB_NAME} num: #${env.BUILD_NUMBER}"
            		sh 'echo second $MY_HI'
 	        }
         }
