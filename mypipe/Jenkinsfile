@@ -39,7 +39,7 @@ agent any
 	        	  	 sh 'echo development registry pushing'
 	        	 	}
 				   if (env.BRANCH_NAME == 'master') {
-	               	 sh 'echo docker url: REGISTRY'				   	
+	               	 sh 'echo docker url: $REGISTRY'				   	
 	               	 sh 'echo master registry pushing'
 	        	 }
                }
