@@ -16,7 +16,7 @@ pipeline {
            		sh 'git config --global user.email "tylerdurdenhg@hotmail.com" '
            		sh 'git add sample.txt'
            		sh 'git commit -m "sample file is added" '
-           		sh 'git push https://tylerdurdenhg@hotmail.com:34vt1960@github.com/jenkins-pipeline.git --all '
+           		sh 'git push -u origin development'
 	        }
         }
         stage('Compile') {
