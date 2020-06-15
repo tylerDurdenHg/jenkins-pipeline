@@ -14,9 +14,9 @@ pipeline {
            		sh 'echo hello $MY_HI >> sample.txt'
            		sh 'git config --global user.name "Tyler Durdenhg" '
            		sh 'git config --global user.email "tylerdurdenhg@hotmail.com" '
-           		sh 'git add .'
+           		sh 'git add sample.txt'
            		sh 'git commit -m "sample file is added" '
-           		sh 'git push origin development'
+           		sh 'git push -u origin HEAD:development'
 	        }
         }
         stage('Compile') {
