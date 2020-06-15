@@ -10,8 +10,10 @@ pipeline {
     stages {
         stage('Preparation') {
         	steps {
-	       		sh 'echo Hi its me'
-           		sh 'echo second $MY_HI'
+	       		sh 'touch sample.txt'
+           		sh 'echo hello $MY_HI >> sample.txt'
+           		sh 'git add .'
+           		sh 'git commit -m "sample file is added" '
 	        }
         }
         stage('Compile') {
