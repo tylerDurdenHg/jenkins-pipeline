@@ -45,6 +45,19 @@ agent any
                }
            }
         }
+        stage('Approve') {
+            input {
+                message "Can we continue?"
+                ok "Yes, please."
+                submitter "hgormus@innova.com.tr"
+                parameters {
+                    string(name: 'Message', defaultValue: 'FINISH', description: 'Caution !! This deletes POD(s) ?')
+                }
+            }
+            steps {
+                echo "Hello, You ${Message}, we are completing the deployment"
+            }
+        }
         stage('Delete Pod') {
            steps {
                sh 'echo remove image from Kubernetes'
