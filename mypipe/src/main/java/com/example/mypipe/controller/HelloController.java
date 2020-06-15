@@ -12,6 +12,6 @@ public class HelloController {
 
 	@GetMapping
 	public String hello() {
-		return "hello 233" + UUID.randomUUID();
+		return "hello new test " + UUID.randomUUID();
 	}
 }
