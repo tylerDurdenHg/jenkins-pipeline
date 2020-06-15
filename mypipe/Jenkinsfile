@@ -12,6 +12,8 @@ pipeline {
         	steps {
 	       		sh 'touch sample.txt'
            		sh 'echo hello $MY_HI >> sample.txt'
+           		sh 'git config --global user.name "Tyler Durdenhg" '
+           		sh 'git config --global user.email "tylerdurdenhg@hotmail.com" '
            		sh 'git add .'
            		sh 'git commit -m "sample file is added" '
 	        }
