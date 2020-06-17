@@ -1,0 +1,57 @@
+pipeline {
+    agent any
+    tools {
+        maven 'Maven'
+    }
+    environment {
+        MY_HI= "HELLO 2"
+    }
+    
+    stages {
+        stage('Preparation') {
+        	steps {
+	       		sh 'echo hello preparation'
+	       		sh 'touch mypipe/src/main/resources/static/1999hg.txt'
+	       		sh 'echo hi how are you > 1999hg.txt '
+	        }
+        }
+        stage('Compile') {
+        steps {
+        	script {
+	            if (env.BRANCH_NAME == 'development') {
+	        	   sh 'echo this is development branch second part'
+		       	   sh 'mvn -f mypipe/pom.xml compile'                          
+	        	 }
+				if (env.BRANCH_NAME == 'master') {
+	               sh 'echo this is master branch second part'
+		           sh 'mvn -f mypipe/pom.xml compile'                       
+	        	 }
+	        }
+
+        	}
+        }
+       stage('Test') {
+        	steps {
+	            sh 'mvn -f mypipe/pom.xml test'
+	        }
+        }
+        
+        
+        
+            /*
+    	 stage('Example') {
+            input {
+                message "Should we continue?"
+                ok "Yes, we should."
+                submitter "alice,bob"
+                parameters {
+                    string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+                }
+            }
+            steps {
+                echo "Hello, ${PERSON}, nice to meet you."
+            }
+        }
+        */
+    }
+}
