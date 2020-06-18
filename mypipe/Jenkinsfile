@@ -12,8 +12,7 @@ pipeline {
         	steps {
 	       		sh 'echo hello preparation'
 	       		sh 'mkdir mypipe/src/main/resources/static -p'
-	       		sh 'touch mypipe/src/main/resources/static/1999hg.txt'
-	       		sh 'echo hi how are you > 1999hg.txt '
+	       		sh 'cat hi its me > mypipe/src/main/resources/static/1999hg.txt'
 	        }
         }
         stage('Compile') {
