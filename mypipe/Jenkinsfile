@@ -12,7 +12,7 @@ pipeline {
         	steps {
 	       		sh 'echo hello preparation'
 	       		sh 'mkdir mypipe/src/main/resources/static -p'
-	       		sh 'cat hi its me > mypipe/src/main/resources/static/1999hg.txt'
+	       		sh 'echo hi its me > mypipe/src/main/resources/static/1998hg.txt'
 	        }
         }
         stage('Compile') {
