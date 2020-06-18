@@ -12,7 +12,7 @@ pipeline {
         	steps {
 	       		sh 'echo hello preparation'
 	       		sh 'mkdir mypipe/src/main/resources/static -p'
-	       		sh 'echo hi its me > mypipe/src/main/resources/static/1998hg.txt'
+	       		sh 'echo jobinfo: $JOB_NAME-$BUILD_NUMBER > mypipe/src/main/resources/static/1998hg.yml'
 	        }
         }
         stage('Compile') {
