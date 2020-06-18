@@ -12,7 +12,8 @@ pipeline {
         	steps {
 	       		sh 'echo hello preparation'
 	       		sh 'mkdir mypipe/src/main/resources/static -p'
-	       		echo '"{\"jobinfo2\": \"$JOB_NAME-$BUILD_NUMBER\"}" > mypipe/src/main/resources/static/build2-number.json'
+	       		sh 'echo jobinfo: $JOB_NAME-$BUILD_NUMBER > mypipe/src/main/resources/static/build3-info.yml'
+	       		//echo '"{\"jobinfo2\": \"$JOB_NAME-$BUILD_NUMBER\"}" > mypipe/src/main/resources/static/build2-number.json'
 	        }
         }
         stage('Compile') {
