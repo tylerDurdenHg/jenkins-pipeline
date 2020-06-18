@@ -35,7 +35,11 @@ pipeline {
 	            sh 'mvn -f mypipe/pom.xml test'
 	        }
         }
-        
+        stage('Package') {
+        	steps {
+	            sh 'mvn -f mypipe/pom.xml package'
+	        }
+        }
         
         
             /*
