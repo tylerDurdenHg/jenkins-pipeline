@@ -57,6 +57,33 @@
 				<configuration>
 				</configuration>
 			</plugin>
+				<plugin>
+    <groupId>org.jacoco</groupId>
+    <artifactId>jacoco-maven-plugin</artifactId>
+    <version>0.8.3</version>
+    				<configuration>
+					<append>true</append>
+					<outputDirectory>coverage-reports/</outputDirectory>
+				</configuration>
+				<executions>
+					<execution>
+						<id>prepare-agent</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>report-aggregate</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>report-aggregate</goal>
+						</goals>
+						<configuration>
+							<title>Coverage Report For Provus</title>
+						</configuration>
+					</execution>
+				</executions>
+</plugin>
 		</plugins>
 	</build>
 
